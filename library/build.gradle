@@ -1,0 +1,94 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC6-3"
+}
+
+apply plugin: 'com.android.library'
+apply plugin: "kotlin-android"
+apply plugin: 'de.mannodermaus.android-junit5'
+apply plugin: "jacoco-android"
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        junitPlatform {
+            jupiterVersion "5.0.3"
+            unitTests.applyDefaultTestOptions true
+            jacocoOptions {
+                xml {
+                    enabled true
+                    destination project.file("${buildDir}/reports/jacoco/report.xml")
+                }
+                html {
+                    enabled true
+                    destination project.file("${buildDir}/reports/jacoco/report.html")
+                }
+                csv {
+                    enabled false
+                    destination project.file("${buildDir}/reports/jacoco/report.csv")
+                }
+            }
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        androidTest.java.srcDirs += "src/androidTest/java"
+        main.java.srcDirs += "src/main/java"
+        test.java.srcDirs += "src/test/java"
+    }
+}
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+detekt {
+    version = "1.0.0.RC6-3"
+    profile("main") {
+        input = "$projectDir/src/main/java"
+        config = "$project.rootDir/detekt.yml"
+        output = "$project.buildDir/reports/detekt.xml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    implementation ("com.android.support:appcompat-v7:27.0.2", {
+        exclude group: 'android.arch.lifecycle', module: 'runtime'
+    })
+    implementation "android.arch.lifecycle:extensions:1.1.0"
+    api "android.arch.lifecycle:runtime:1.1.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.20"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.20"
+    kapt "android.arch.lifecycle:compiler:1.1.0"
+    testImplementation junit5.unitTests()
+    testCompileOnly junit5.unitTestsRuntime()
+    testImplementation 'org.amshove.kluent:kluent-android:1.33'
+    testImplementation 'android.arch.core:core-testing:1.1.0'
+    testImplementation "org.robolectric:robolectric:3.6.1"
+    testImplementation "org.mockito:mockito-core:2.13.0"
+}
+
+check.dependsOn detektCheck

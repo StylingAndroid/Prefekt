@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+    <TextView
+      android:id="@+id/prefekt_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/prefekt"
+      android:layout_margin="8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckedTextView
+      android:id="@+id/prefekt_boolean"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+      android:gravity="center"
+      android:text="@string/boolean_label"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/prefekt_label"
+      android:focusableInTouchMode="true"/>
+
+    <TextView
+      android:id="@+id/prefekt_string_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/string_label"
+      app:layout_constraintBaseline_toBaselineOf="@id/prefekt_string"
+      app:layout_constraintStart_toStartOf="@id/prefekt_boolean" />
+
+    <EditText
+      android:id="@+id/prefekt_string"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:hint="@string/string_label"
+      android:inputType="textNoSuggestions"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/prefekt_string_label"
+      app:layout_constraintTop_toBottomOf="@id/prefekt_boolean" />
+
+    <TextView
+      android:id="@+id/sp_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/sharedpreferences"
+      android:layout_margin="8dp"
+      android:paddingTop="8dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/prefekt_string" />
+
+    <CheckedTextView
+      android:id="@+id/sp_boolean"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+      android:gravity="center"
+      android:text="@string/boolean_label"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/sp_label" />
+
+    <TextView
+      android:id="@+id/sp_string_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/string_label"
+      app:layout_constraintBaseline_toBaselineOf="@id/sp_string"
+      app:layout_constraintStart_toStartOf="@id/sp_boolean" />
+
+    <EditText
+      android:id="@+id/sp_string"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:hint="@string/string_label"
+      android:inputType="textNoSuggestions"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/sp_string_label"
+      app:layout_constraintTop_toBottomOf="@id/sp_boolean" />
+
+  </android.support.constraint.ConstraintLayout>
+</ScrollView>

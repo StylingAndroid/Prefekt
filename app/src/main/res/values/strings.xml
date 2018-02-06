@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">SharedPreferences</string>
+  <string name="boolean_label">Boolean</string>
+  <string name="string_label">String</string>
+  <string name="prefekt">Prefekt</string>
+  <string name="sharedpreferences">SharedPreferences</string>
+</resources>
