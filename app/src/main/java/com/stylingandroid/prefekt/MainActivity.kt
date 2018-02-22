@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.CheckedTextView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.prefekt_test.*
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.launch
 
 const val KEY_BOOLEAN = "BOOLEAN"
 const val KEY_STRING = "STRING"
@@ -34,6 +36,19 @@ class MainActivity : AppCompatActivity() {
 
         createPrefektControls()
         createManualControls()
+        launch(CommonPool) {
+            println("Value: ${stringValue.getValue()}")
+        }
+        stringValue.subscribe(StringSubscriber)
+        stringValue.getValue {
+
+        }
+    }
+
+    private object StringSubscriber : Subscriber<String> {
+        override fun onChanged(newValue: String) {
+            println("New Value: $newValue")
+        }
     }
 
     private fun createPrefektControls() {

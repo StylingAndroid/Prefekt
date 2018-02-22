@@ -1,0 +1,33 @@
+apply plugin: 'com.jfrog.bintray'
+
+version = Versions.versionString
+
+Properties properties = new Properties()
+File localProperties = project.rootProject.file('local.properties');
+if (localProperties.exists()) {
+    properties.load(localProperties.newDataInputStream())
+} else {
+    properties.put("bintray.user", System.getenv("BINTRAY_USER"))
+    properties.put("bintray.apikey", System.getenv("BINTRAY_API_KEY"))
+}
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    dryRun = Publishing.bintrayDryRun
+    publish = true
+
+    publications = ["Prefekt"]
+    pkg {
+        repo = 'maven'
+        name = "Prefekt"
+        desc = "An Android SharedPreferences library for Kotlin"
+        websiteUrl = 'https://github.com/StylingAndroid/Prefekt'
+        vcsUrl = 'https://github.com/StylingAndroid/Prefekt.git'
+        licenses = ["Apache-2.0"]
+        version {
+            name = Versions.versionString
+            desc = "An Android SharedPreferences library for Kotlin"
+        }
+    }
+}

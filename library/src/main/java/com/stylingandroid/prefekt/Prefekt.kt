@@ -14,6 +14,9 @@ import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 import java.util.concurrent.TimeUnit
 
+/**
+ * A Prefekt Instance
+ */
 class Prefekt<T : Any> internal constructor(
         private val owner: PrefektOwner,
         key: String,
@@ -27,12 +30,16 @@ class Prefekt<T : Any> internal constructor(
         owner.lifecycle.addObserver(observer)
     }
 
-    suspend fun getValue(): T =
-            if (isInitialised) {
-                liveData.getValueBlocking()
-            } else {
-                getAfterInit().await()
-            }
+    suspend fun getValue(): T {
+        if (owner.isMainThread) {
+            throw RuntimeException("You cannot not call getValue() from the UI thread")
+        }
+        return if (isInitialised) {
+            liveData.getValueBlocking()
+        } else {
+            getAfterInit().await()
+        }
+    }
 
     private val isInitialised: Boolean
         get() = ::liveData.isInitialized && liveData.isInitialised

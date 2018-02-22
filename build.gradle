@@ -1,17 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.21'
     repositories {
         google()
         jcenter()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha01'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.0.30"
-        classpath "org.junit.platform:junit-platform-gradle-plugin:1.0.3"
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.2'
+        classpath "com.android.tools.build:gradle:${Versions.build_tools}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:${Versions.android_junit5}"
+        classpath "org.junit.platform:junit-platform-gradle-plugin:${Versions.junit_platform}"
+        classpath "com.dicedmelon.gradle:jacoco-android:${Versions.jacoco}"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:${Versions.bintray}"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -22,6 +25,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     }
 }
 

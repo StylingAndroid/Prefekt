@@ -8,13 +8,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "jacoco-android"
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion Versions.compileSdkVersion
     defaultConfig {
         applicationId "com.stylingandroid.prefekt"
-        minSdkVersion 16
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionString
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -32,7 +32,7 @@ kotlin {
 }
 
 detekt {
-    version = "1.0.0.RC6-3"
+    version = Versions.detekt
     profile("main") {
         input = "$projectDir/src/main/java"
         config = "$project.rootDir/detekt.yml"
@@ -43,12 +43,12 @@ detekt {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta4'
-    testImplementation 'junit:junit:4.12'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.20"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.20"
+    implementation Libs.kotlin_stdlib
+    implementation Libs.appcompat
+    implementation Libs.constraint_layout
+    testImplementation Libs.junit
+    implementation Libs.kotlin_coroutines_core
+    implementation Libs.kotlin_coroutines_android
     implementation project(':library')
 }
 
