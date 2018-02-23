@@ -1,11 +1,11 @@
-#Prefekt
+# Prefekt
 [ ![Latest Version](https://api.bintray.com/packages/stylingandroid/maven/Prefekt/images/download.svg) ](https://bintray.com/stylingandroid/maven/Prefekt/_latestVersion)
 
 Prefekt is an Android SharedPreferences library for Kotlin. It is typesafe, easy to consume, and efficient thanks to in-memory caching. 
 You can subscribe for updates so that if the underlying SharedPreference value is changed you receive a callback even if the change was made
 directly to the SharedPreference value is changed outside of Prefekt.
 
-###Usage
+### Usage
 
 To use Prefekt in your project add the following dependency:
 
@@ -66,7 +66,7 @@ You can unsubscribe, as well:
     stringValue.unsubscribe(StringSubscriber)
 
 
-###Internals
+### Internals
 
 Internally Prefekt uses the Android Architecture components to tie in to your Activity & Fragment lifecycles, and the in-memory
 cached value is actually a LiveData object. This is necessary because SharedPreference operations require a valid Context.
@@ -80,6 +80,6 @@ retrieval using the declaration or manual subscription, the lambda callback, or 
 The advantage of this approach is the cleanliness of the API which only requires you to pass in the key name and default value 
 for the underlying SharedPreference value.
 
-###Future
+### Future
 
 There are some interesting features in the pipeline so watch this space... 
