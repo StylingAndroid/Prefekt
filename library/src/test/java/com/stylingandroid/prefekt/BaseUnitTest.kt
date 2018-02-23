@@ -1,10 +1,5 @@
 package com.stylingandroid.prefekt
 
-import android.arch.lifecycle.Lifecycle
-import com.nhaarman.mockito_kotlin.argumentCaptor
-import com.nhaarman.mockito_kotlin.atLeast
-import com.nhaarman.mockito_kotlin.capture
-import com.nhaarman.mockito_kotlin.verify
 import com.stylingandroid.prefekt.internal.PrefektOwner
 import kotlinx.coroutines.experimental.Unconfined
 import org.amshove.kluent.When
