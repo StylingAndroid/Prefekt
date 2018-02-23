@@ -1,5 +1,5 @@
 # Prefekt
-[ ![Latest Version](https://api.bintray.com/packages/stylingandroid/maven/Prefekt/images/download.svg) ](https://bintray.com/stylingandroid/maven/Prefekt/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/stylingandroid/maven/Prefekt/images/download.svg) ](https://bintray.com/stylingandroid/maven/Prefekt/_latestVersion)
 
 <img align="right" height="150" width="150" src="app/src/main/ic_launcher-web.png">Prefekt is an Android SharedPreferences library for Kotlin. It is typesafe, easy to consume, and efficient thanks to in-memory caching. 
 You can subscribe for updates so that if the underlying SharedPreference value is changed you receive a callback even if the change was made
