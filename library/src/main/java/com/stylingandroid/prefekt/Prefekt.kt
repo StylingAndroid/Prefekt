@@ -32,7 +32,7 @@ class Prefekt<T : Any> internal constructor(
 
     suspend fun getValue(): T {
         if (owner.isMainThread) {
-            throw RuntimeException("You cannot not call getValue() from the UI thread")
+            throw RuntimeException("You cannot call getValue() from the UI thread")
         }
         return if (isInitialised) {
             liveData.getValueBlocking()
