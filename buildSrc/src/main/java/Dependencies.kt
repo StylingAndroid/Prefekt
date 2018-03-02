@@ -23,7 +23,7 @@ object Versions {
 
     private const val major = 1
     private const val minor = 0
-    private const val patch = 0
+    private const val patch = 1
 
     val versionCode: Int = (major * 10000) + (minor * 100) + patch
 
